@@ -1,0 +1,189 @@
+page-home-dashboard {
+    ion-header {
+        ion-toolbar {
+            .date-filters {
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .filter-item-separator {
+                    font-size: 10px;
+                    position: relative;
+                    top: -3px;
+                    margin: 0 10px;
+                }
+
+                .filter-item {
+                    display: flex;
+                    align-items: center;
+                
+                    ion-icon {
+                        &[name='calendar-outline'] {
+                            font-size: 14px;
+                            position: relative;
+                            top: -2px;
+                            margin: 2px;
+                        }
+                    }
+                    ion-datetime {
+                        --padding-start: 0;
+                        --padding-end: 0;
+                        --padding-top: 0;
+                        --padding-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+    ion-content {
+        .card-total {
+            padding-left: unset;
+            padding-right: unset;
+            padding-inline-start: var(--ion-padding, 16px);
+            padding-inline-end: var(--ion-padding, 16px);
+            min-height: 80px;
+
+            .total-with-chart {
+                display: flex;
+                justify-content: space-between;
+
+                .total-container {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    margin-right: 20px;
+
+                    .total-label {
+                        font-size: 2em;
+                        font-weight: bold;
+                    }
+                }
+
+                .total-chart-container {
+                    min-height: 45px;
+                    min-width: 200px;
+                }
+            }
+        }
+
+        .card-today {
+            position: relative;
+            overflow: visible;
+
+            &.md {
+                margin-bottom: 30px;
+            }
+
+            ion-card-content {
+                min-height: 185px;
+
+                .today-header{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    border-bottom: 1px solid black;
+                    padding-bottom: 10px;
+
+                    .today-info {
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+
+                        .date {
+                            width: 60px;
+                            text-align: center;
+                            font-size: 1.8em;
+                            font-weight: bold;
+                        }
+
+                        .full-date {
+                            font-size: 0.9em;
+                            width: calc(100% - 60px);
+                        }
+                    }
+
+                    .today-total {
+                        font-size: 1em;
+                    }
+                }
+
+                .expense-item {
+                    min-height: 0;
+                    height: 45px;
+
+                    .icon-container {
+                        width: 30px;
+                        height: 30px;
+
+                        ion-icon {
+                            font-size: 20px;
+                            top: -3px;
+                            position: relative;
+                        }
+                    }
+
+                    .category-description-amount {
+                        .category-description {
+                            .description {
+                                font-size: 0.9em;
+                            }
+                        }
+                        .amount-date {
+                            .amount {
+                                font-size: 0.9em;
+                            }
+                        }
+                    }
+                }
+
+                no-data {
+                    .data-empty {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        margin-bottom: 10px;
+
+                        ion-icon {
+                            font-size: 50px;
+                        }
+                    }
+                }
+
+                .button-viewall {
+                    position: absolute;
+                    bottom: -16px;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                    width: 100px;
+                    font-size: 0.8em;
+                }
+            }
+        }
+
+        .card-total {
+            // ion-card-content {
+            //     > div {
+            //         padding: 0 20px 20px 20px;
+
+            //         ion-label {
+            //             font-size: 1.2em;
+            //             font-weight: bold;
+            //         }
+            //     }
+            // }
+        }
+
+        .card-date-spending {
+            ion-card-content {
+                min-height: 300px;
+            }
+        }
+
+        .card-category-spending {
+            ion-card-content {
+                min-height: 250px;
+            }
+        }
+    }
+}
