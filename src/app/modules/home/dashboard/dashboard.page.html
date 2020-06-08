@@ -101,15 +101,17 @@
           <thead>
             <tr>
               <th>{{'dashboard.name' | localizedresource | async}}</th>
-              <th>{{'common.total' | localizedresource | async}}</th>
               <th>{{'common.active' | localizedresource | async}}</th>
               <th>{{'common.recovered' | localizedresource | async}}</th>
               <th>{{'common.deaths' | localizedresource | async}}</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let country of globalCountries.result">
-              <td>{{ country }}</td>
+            <tr *ngFor="let item of globalCountries.result">
+              <td>{{ item['countryName'] }}</td>
+              <td><ion-badge color="primary">{{ item.confirmed }}</ion-badge></td>
+              <td><ion-badge color="primary">{{ item.recovered }}</ion-badge></td>
+              <td><ion-badge color="danger">{{ item.deaths }}</ion-badge></td>
             </tr>
               <!-- <tr *ngFor="let visitor of visitors">
                   <td class="table-icon" [ngSwitch]="visitor.documentTypeId">
@@ -124,9 +126,7 @@
                       <div>{{visitor.contact}}</div>
                   </td>
                   <td>{{ visitor.attendee }}</td>
-                  <td>
-                      <ion-badge color="primary">{{ visitor.checkIn }}</ion-badge>
-                  </td>
+                  <td><ion-badge color="primary">{{ visitor.checkIn }}</ion-badge></td>
                   <td>
                       <ion-button fill="clear" *ngIf="!visitor.checkOut" (click)="onVisitorCheckOutClicked(visitor)">
                           <ion-icon name="log-out"></ion-icon>

@@ -9,6 +9,7 @@ import { NgxPubSubService } from '@pscoped/ngx-pub-sub';
 import { AppConstant } from './modules/shared/app-constant';
 import { Router } from '@angular/router';
 import { AppSettingService } from './modules/shared/app-setting.service';
+import './modules/shared/helpers';
 
 @Component({
   selector: 'app-root',

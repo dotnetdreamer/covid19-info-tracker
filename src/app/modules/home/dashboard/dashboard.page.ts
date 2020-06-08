@@ -10,7 +10,7 @@ import { BasePage } from '../../shared/base.page';
 import { AppConstant } from '../../shared/app-constant';
 import { Subscription } from 'rxjs';
 import { CovidInfoService } from '../covid-info/covid-info.service';
-import { IGlobalInfo, IGlobalLatest } from '../covid-info/covid-info.model';
+import { IGlobalInfo, IGlobalLatest, IGlobalLatestTransformed } from '../covid-info/covid-info.model';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -56,7 +56,7 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
       recovered: 0
     }
   };
-  globalCountries: IGlobalLatest;
+  globalCountries: IGlobalLatestTransformed;
 
   constructor(private covidInfoSvc: CovidInfoService) { 
     super();
@@ -92,6 +92,7 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
       //countries
       const countriesInfo = await this.covidInfoSvc.getGlobalLatest(args);
       this.globalCountries = countriesInfo;
+      console.log(countriesInfo.result);
     } catch(e) {
       //ignore...
     } finally {

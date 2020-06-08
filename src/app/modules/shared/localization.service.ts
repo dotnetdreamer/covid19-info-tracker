@@ -44,7 +44,7 @@ export class LocalizationService {
     }
 
     async parseResourceFile(workingLanguage) {
-        const resources = await import (`../../../assets/localization/localize-${workingLanguage}.json`);
+        const resources = await import (`../../../assets/localization/${workingLanguage}/localize.json`);
         this.localizedStrings = resources.default;
     }
     

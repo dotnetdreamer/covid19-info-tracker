@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import * as moment from 'moment';
 
 import { BaseService } from '../../shared/base.service';
-import { IGlobalInfo, IGlobalLatest } from './covid-info.model';
+import { IGlobalInfo, IGlobalLatest, ICountry, IGlobalLatestTransformed } from './covid-info.model';
 import { CovidInfoConstant } from './covid-info-constant';
 import { AppConstant } from '../../shared/app-constant';
 
@@ -49,12 +49,12 @@ export class CovidInfoService extends BaseService {
         });
     } 
 
-    getGlobalLatest(args?: { forceRefresh }): Promise<IGlobalLatest> {
+    getGlobalLatest(args?: { forceRefresh }): Promise<IGlobalLatestTransformed> {
         return new Promise(async (resolve, reject) => {
-            let data: IGlobalLatest;
+            let data: IGlobalLatestTransformed;
             //check if local is expired
             if(!args || !(args && args.forceRefresh)) {
-                data = await this.appSettingSvc.get<IGlobalLatest>(CovidInfoConstant.KEY_GLOBAL_LATEST);
+                data = await this.appSettingSvc.get<IGlobalLatestTransformed>(CovidInfoConstant.KEY_GLOBAL_LATEST);
                 if(data) {
                     const now = moment();
                     const createdOn = moment(data.createdOn, AppConstant.DEFAULT_DATETIME_FORMAT);
@@ -68,10 +68,9 @@ export class CovidInfoService extends BaseService {
             
             if(!data) {
                 try {
-                    data = await this.getData<IGlobalLatest>({ url: `global/latest` });
-                    if(data) {
-                        let sortedResult = data.result;
-                        sortedResult.sort((a: Object, b: Object) => {
+                    const response = await this.getData<IGlobalLatest>({ url: `global/latest` });
+                    if(response) {
+                        response.result = response.result.sort((a: Object, b: Object) => {
                             return (Object.values(a)[0].confirmed > Object.values(b)[0].confirmed 
                             ? -1 
                             : (Object.values(a)[0].confirmed < Object.values(b)[0].confirmed ? 1 : 0));
@@ -84,8 +83,21 @@ export class CovidInfoService extends BaseService {
                 }
             }
 
+            //map countries
+            if(data) {
+                const countries = await this.appSettingSvc.getCountries();
+                data.result = data.result.map(r => {
+                    const code = Object.keys(r)[0];
+                    const country = countries.filter(c => c["alpha-3"] == code)[0];
+                    if(country) {
+                        r[code].countryName = country.name;
+                    }
+                    return r[code];
+                });
+            }
             resolve(data);
         });
     }
+
 
 }
