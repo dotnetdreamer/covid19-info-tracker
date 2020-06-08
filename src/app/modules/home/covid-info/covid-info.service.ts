@@ -15,7 +15,7 @@ export class CovidInfoService extends BaseService {
         super();
     }
 
-    getGlobal(args?: { forceRefresh }): Promise<IGlobalInfo> {
+    getGlobal(args?: { forceRefresh? }): Promise<IGlobalInfo> {
         return new Promise(async (resolve, reject) => {
             let info: IGlobalInfo;
             //check if local is expired
@@ -49,7 +49,7 @@ export class CovidInfoService extends BaseService {
         });
     } 
 
-    getGlobalLatest(args?: { forceRefresh }): Promise<IGlobalLatestTransformed> {
+    getGlobalLatest(args?: { forceRefresh? }): Promise<IGlobalLatestTransformed> {
         return new Promise(async (resolve, reject) => {
             let data: IGlobalLatestTransformed;
             //check if local is expired

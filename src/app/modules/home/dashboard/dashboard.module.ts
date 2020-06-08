@@ -5,12 +5,12 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
-import { ComponentsWithOutFormsModule } from 'src/app/components/components-without-forms.module';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { ComponentsWithFormsModule } from 'src/app/components/components-with-forms.module';
 
 @NgModule({
   imports: [
-    ComponentsWithOutFormsModule,
+    ComponentsWithFormsModule,
     PipesModule,
     DashboardPageRoutingModule,
     NgApexchartsModule

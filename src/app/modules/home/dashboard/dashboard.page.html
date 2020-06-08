@@ -97,6 +97,12 @@
       </ion-item>
     </ion-card-header>
     <ion-card-content class="custom-table">
+      <div class="visitor-card-bar">
+        <div class="visitor-card-bar-left">
+            <ion-searchbar animated debounce="500" placeholder="" 
+              [(ngModel)]="searchText" (ngModelChange)="onVisitorSearchChanged()"></ion-searchbar>
+        </div>
+      </div>
       <table *ngIf="globalCountries">
           <thead>
             <tr>

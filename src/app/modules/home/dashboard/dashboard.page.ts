@@ -46,8 +46,8 @@ export type CategoryChartOptions = {
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardPage extends BasePage implements OnInit, OnDestroy {
+  searchText = "";
   categoryChartOptions: Partial<CategoryChartOptions>;
-
   globalInfo: IGlobalInfo = {
     result: {
       confirmed: 0,
@@ -57,6 +57,7 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
     }
   };
   globalCountries: IGlobalLatestTransformed;
+  private _allGlobalCountries: IGlobalLatestTransformed;
 
   constructor(private covidInfoSvc: CovidInfoService) { 
     super();
@@ -76,10 +77,16 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
     }, 300);
   }
 
+  async onVisitorSearchChanged() {
+    const term = this.searchText.toLowerCase();
+    this.globalCountries.result = this._allGlobalCountries.result
+      .filter(c => c['countryName'].toLowerCase().startsWith(term));
+  }
+
   ngOnDestroy() {
   }
 
-  private async _getGlobalInfo(args?: { forceRefresh }) {
+  private async _getGlobalInfo(args?: { forceRefresh? }) {
     if(args && args.forceRefresh) {
       this._setDefaults();
     }
@@ -91,8 +98,8 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
 
       //countries
       const countriesInfo = await this.covidInfoSvc.getGlobalLatest(args);
+      this._allGlobalCountries = countriesInfo;
       this.globalCountries = countriesInfo;
-      console.log(countriesInfo.result);
     } catch(e) {
       //ignore...
     } finally {
