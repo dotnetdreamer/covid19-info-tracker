@@ -4,26 +4,6 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <div class="date-filters">
-      <div class="filter-item">
-        <ion-icon name="calendar-outline"></ion-icon>
-        <ion-datetime 
-          [displayFormat]="DEFAULT_DATE_FORMAT" [value]="selectedFromDate"  
-            (ionChange)="onDateSelectionChanged($event, 'fromDate')"></ion-datetime>
-      </div>
-      <div class="filter-item-separator">-</div>
-      <div class="filter-item">
-        <ion-icon name="calendar-outline"></ion-icon>
-        <ion-datetime [value]="selectedToDate" [displayFormat]="DEFAULT_DATE_FORMAT" 
-        (ionChange)="onDateSelectionChanged($event, 'toDate')"></ion-datetime>
-      </div>
-    </div>
-    <!-- only here to center the date filters-->
-    <ion-buttons slot="end" style="visibility: hidden;">
-      <ion-button>
-        <ion-icon slot="icon-only" name="more"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -31,4 +11,73 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+  <ion-card class="report-card">
+    <ion-card-header>
+      <ion-icon name="pie"></ion-icon>
+      Summary
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+              <div class="box">
+                  <div class="box-body">
+                      <div class="box-widget">
+                          <h2>
+                              <span class="bg-green">{{'common.cases' | localizedresource | async}}</span>
+                          </h2>
+                          <ion-icon name="people"></ion-icon>
+                          <h4 class="text-green">{{globalInfo?.result.total}}</h4>
+                          <h5>{{'common.total' | localizedresource | async}}</h5>
+                      </div>
+                  </div>
+              </div>
+          </ion-col>
+          <ion-col>
+              <div class="box">
+                  <div class="box-body">
+                      <div class="box-widget">
+                          <h2>
+                              <span class="bg-aqua">{{'common.cases' | localizedresource | async}}</span>
+                          </h2>
+                          <ion-icon name="checkmark-circle-outline"></ion-icon>
+                          <h4 class="text-aqua">{{globalInfo?.result.confirmed}}</h4>
+                          <h5>{{'common.confirmed' | localizedresource | async}}</h5>
+                      </div>
+                  </div>
+              </div>
+          </ion-col>
+          <ion-col>
+              <div class="box">
+                  <div class="box-body">
+                      <div class="box-widget">
+                          <h2>
+                              <span class="bg-blue">{{'common.cases' | localizedresource | async}}</span>
+                          </h2>
+                          <ion-icon name="log-out"></ion-icon>
+                          <h4 class="text-blue">{{globalInfo?.result.deaths}}</h4>
+                          <h5>{{'common.deaths' | localizedresource | async}}</h5>
+                      </div>
+                  </div>
+              </div>
+          </ion-col>
+          <ion-col>
+              <!-- based uplon opening and closing time of organization -->
+              <div class="box">
+                  <div class="box-body">
+                      <div class="box-widget">
+                          <h2>
+                              <span class="bg-red">{{'common.cases' | localizedresource | async}}</span>
+                          </h2>
+                          <ion-icon name="alert"></ion-icon>
+                          <h4 class="text-red">{{globalInfo?.result.recovered}}</h4>
+                          <h5>{{'common.recovered' | localizedresource | async}}</h5>
+                      </div>
+                  </div>
+              </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

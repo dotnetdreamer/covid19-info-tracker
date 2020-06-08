@@ -1,189 +1,119 @@
 page-home-dashboard {
     ion-header {
         ion-toolbar {
-            .date-filters {
-                margin-top: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
 
-                .filter-item-separator {
-                    font-size: 10px;
-                    position: relative;
-                    top: -3px;
-                    margin: 0 10px;
-                }
-
-                .filter-item {
-                    display: flex;
-                    align-items: center;
-                
-                    ion-icon {
-                        &[name='calendar-outline'] {
-                            font-size: 14px;
-                            position: relative;
-                            top: -2px;
-                            margin: 2px;
-                        }
-                    }
-                    ion-datetime {
-                        --padding-start: 0;
-                        --padding-end: 0;
-                        --padding-top: 0;
-                        --padding-bottom: 0;
-                    }
-                }
-            }
         }
     }
     ion-content {
-        .card-total {
-            padding-left: unset;
-            padding-right: unset;
-            padding-inline-start: var(--ion-padding, 16px);
-            padding-inline-end: var(--ion-padding, 16px);
-            min-height: 80px;
+        ion-card {
+             &.report-card{
+                box-shadow: none;
 
-            .total-with-chart {
-                display: flex;
-                justify-content: space-between;
-
-                .total-container {
-                    display: flex;
-                    justify-content: center;
-                    flex-direction: column;
-                    margin-right: 20px;
-
-                    .total-label {
-                        font-size: 2em;
-                        font-weight: bold;
-                    }
-                }
-
-                .total-chart-container {
-                    min-height: 45px;
-                    min-width: 200px;
+                ion-card-content {
+                    padding: 0;
                 }
             }
         }
 
-        .card-today {
+        .box {
             position: relative;
-            overflow: visible;
-
-            &.md {
-                margin-bottom: 30px;
+            margin-bottom: 20px;
+            width: 100%;
+            background: #ffffff;
+          background: linear-gradient(135deg, transparent 0, #ffffff 0) top left, 
+            linear-gradient(225deg, transparent 0, #ffffff 0) top right, 
+            linear-gradient(315deg, transparent 15px, #ffffff 0) bottom right, 
+            linear-gradient(45deg, transparent 0, #ffffff 0) bottom left;
+            background-size: 52% 52%;
+          background-repeat: no-repeat;
+        
+          .box-body {
+            padding: 20px;
+        
+              &:before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                border-width: 20px 20px 0 0;
+                border-style: solid;
+                border-color: #DBE3E9 transparent transparent #DBE3E9;
+                background: transparent;
+                display: block;
+                width: 0;
             }
-
-            ion-card-content {
-                min-height: 185px;
-
-                .today-header{
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    border-bottom: 1px solid black;
-                    padding-bottom: 10px;
-
-                    .today-info {
-                        display: flex;
-                        align-items: center;
-                        width: 100%;
-
-                        .date {
-                            width: 60px;
-                            text-align: center;
-                            font-size: 1.8em;
-                            font-weight: bold;
-                        }
-
-                        .full-date {
-                            font-size: 0.9em;
-                            width: calc(100% - 60px);
-                        }
-                    }
-
-                    .today-total {
-                        font-size: 1em;
-                    }
-                }
-
-                .expense-item {
-                    min-height: 0;
-                    height: 45px;
-
-                    .icon-container {
-                        width: 30px;
-                        height: 30px;
-
-                        ion-icon {
-                            font-size: 20px;
-                            top: -3px;
-                            position: relative;
-                        }
-                    }
-
-                    .category-description-amount {
-                        .category-description {
-                            .description {
-                                font-size: 0.9em;
-                            }
-                        }
-                        .amount-date {
-                            .amount {
-                                font-size: 0.9em;
-                            }
-                        }
-                    }
-                }
-
-                no-data {
-                    .data-empty {
-                        padding-top: 10px;
-                        padding-bottom: 10px;
-                        margin-bottom: 10px;
-
-                        ion-icon {
-                            font-size: 50px;
-                        }
-                    }
-                }
-
-                .button-viewall {
-                    position: absolute;
-                    bottom: -16px;
-                    left: 0;
-                    right: 0;
-                    margin: auto;
-                    width: 100px;
-                    font-size: 0.8em;
-                }
+          }
+          
+          .box-widget {
+            border-radius: 0;
+            padding: 0 30px 20px 0;
+            margin: -40px -20px 0;
+        
+            h2 span {
+              background: #000;
+              font-size: 13px;
+              margin: 15px 0 0;
+              padding: 3px 15px;
+              color: #fff;
+              display: inline-block;
+        
+              &.bg-green {
+                background-color: #45B6B0 !important;
+              }
+        
+              &.bg-red {
+                background-color: #FF6B6B !important;
+              }
+              &.bg-aqua {
+                background-color: #65C3DF !important;
+              }
+              &.bg-blue {
+                background-color: #1688EC !important;
+              }
             }
-        }
-
-        .card-total {
-            // ion-card-content {
-            //     > div {
-            //         padding: 0 20px 20px 20px;
-
-            //         ion-label {
-            //             font-size: 1.2em;
-            //             font-weight: bold;
-            //         }
-            //     }
-            // }
-        }
-
-        .card-date-spending {
-            ion-card-content {
-                min-height: 300px;
+        
+            h4 {
+              font-size: 45px;
+              font-weight: bold;
+              text-align: right;
+        
+              &.text-green {
+                color: #45B6B0 !important;
+              }
+        
+              &.text-red {
+                color: #FF6B6B !important;
+              }
+              &.text-aqua {
+                color: #65C3DF !important;
+              }
+              &.text-blue { 
+                color: #32526E !important;
+              }
             }
-        }
-
-        .card-category-spending {
-            ion-card-content {
-                min-height: 250px;
+        
+            h5 {
+              font-size: 16px;
+              font-weight: 100;
+              text-align: right;
+              text-transform: uppercase;
             }
+        
+            ion-icon {
+              background: #c3ccdb;
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              display: inline-block;
+              text-align: center;
+              color: #fff;
+              font-size: 40px;
+              line-height: 79px;
+              float: left;
+              margin: 0 20px;
+              padding: 0;
+            }
+          }
         }
     }
 }

@@ -9,6 +9,8 @@ import { AlertController } from '@ionic/angular';
 import { BasePage } from '../../shared/base.page';
 import { AppConstant } from '../../shared/app-constant';
 import { Subscription } from 'rxjs';
+import { CovidInfoService } from '../covid-info/covid-info.service';
+import { IGlobalInfo } from '../covid-info/covid-info.model';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -43,36 +45,28 @@ export type CategoryChartOptions = {
   styleUrls: ['./dashboard.page.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DashboardPage extends BasePage implements AfterViewInit, OnDestroy {
-  DEFAULT_DATE_FORMAT = AppConstant.DEFAULT_DATE_FORMAT;
-  selectedFromDate;
-  selectedToDate;
-  
-  constructor(private alertCtrl: AlertController) { 
+export class DashboardPage extends BasePage implements OnInit, OnDestroy {
+  globalInfo: IGlobalInfo = {
+    result: {
+      confirmed: 0,
+      total: 0,
+      deaths: 0,
+      recovered: 0
+    }
+  };
+
+  constructor(private covidInfoSvc: CovidInfoService) { 
     super();
     
     this._subscribeToEvents();
-
-    this.selectedFromDate = moment().add(-6, 'd').format(AppConstant.DEFAULT_DATE_FORMAT);
-    this.selectedToDate = moment().format(AppConstant.DEFAULT_DATE_FORMAT);
   }
 
-  async ngAfterViewInit() {
-  }
-
-  async onDateSelectionChanged($event: CustomEvent, prop: 'fromDate' | 'toDate') {
-    const d = moment($event.detail.value).format(AppConstant.DEFAULT_DATE_FORMAT);
-
-    // await this._renderCharts(prop == 'fromDate' ? d : this.selectedFromDate
-    //   , prop == 'toDate' ? d : this.selectedToDate);
+  async ngOnInit() {
+    await this._getGlobalInfo(); 
   }
 
   async doRefresh(ev) {
-    //reset
-    this.selectedFromDate = moment().add(-6, 'd').format(AppConstant.DEFAULT_DATE_FORMAT);
-    this.selectedToDate = moment().format(AppConstant.DEFAULT_DATE_FORMAT);
-
-    await this._renderCharts(this.selectedFromDate, this.selectedToDate);
+    await this._getGlobalInfo({ forceRefresh: true }); 
 
     setTimeout(() => {
       ev.target.complete();
@@ -82,11 +76,37 @@ export class DashboardPage extends BasePage implements AfterViewInit, OnDestroy 
   ngOnDestroy() {
   }
 
-  private async _renderCharts(fromDate, toDate) {
+  private async _getGlobalInfo(args?: { forceRefresh }) {
+    if(args && args.forceRefresh) {
+      this._setDefaults();
+    }
+
+    try {
+      const info = await this.covidInfoSvc.getGlobal(args);
+      info.result.total = info.result.confirmed + info.result.deaths + info.result.recovered;
+      this.globalInfo = info;
+    } catch(e) {
+      //ignore...
+    }
+
+  }
+
+  private async _renderCharts() {
    
   }
 
   private _subscribeToEvents() {
     
+  }
+
+  private _setDefaults() {
+    this.globalInfo = {
+      result: {
+        confirmed: 0,
+        total: 0,
+        deaths: 0,
+        recovered: 0
+      }
+    };
   }
 }

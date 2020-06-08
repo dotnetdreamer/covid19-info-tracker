@@ -1,0 +1,24 @@
+{
+    "common": {
+        "success": "Success",
+        "failed": "Failed",
+        "dismiss": "Dismiss",
+        "ok": "OK",
+        "cancel": "Cancel",
+        "yes": "Yes",
+        "no": "No",
+        "update": "Update",
+        "clear": "Clear",
+        "reset": "Reset",
+        "select": "[ Select ]",
+        "areyousure": "Are you sure ?",
+        "version": "Version",
+        "nodata": "No data found",
+        "viewall": "View all",
+        "total": "Total",
+        "deaths": "Deaths",
+        "confirmed": "Confirmed",
+        "recovered": "Recovered",
+        "cases": "Cases"
+    }
+}

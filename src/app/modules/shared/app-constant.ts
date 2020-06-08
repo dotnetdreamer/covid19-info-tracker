@@ -5,8 +5,8 @@ export class AppConstant {
     public static readonly DEBUG = !environment.production;
 
     public static readonly BASE_URL = !environment.production 
-        ? "http://localhost:3000/" : "https://nest.dotnetdreamer2.net/";
-    public static readonly BASE_API_URL = `${AppConstant.BASE_URL}`;
+        ? "https://covidapi.info/" : "https://covidapi.info/";
+    public static readonly BASE_API_URL = `${AppConstant.BASE_URL}api/v1/`;
     public static readonly DB_NAME = "covid-info-tracker";
 
     public static readonly DEFAULT_DATETIME_FORMAT = "YYYY-MM-DD HH:mm:ss";
