@@ -77,10 +77,19 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
     }, 300);
   }
 
-  async onVisitorSearchChanged() {
+  async onSearchChanged(ev: CustomEvent) {
     const term = this.searchText.toLowerCase();
-    this.globalCountries.result = this._allGlobalCountries.result
-      .filter(c => c['countryName'].toLowerCase().startsWith(term));
+    if(!term) {
+      return;
+    }
+    
+    const filtered = this.globalCountries.result
+      .filter(c => c['countryName'] && c['countryName'].toLowerCase().startsWith(term));
+    this.globalCountries.result = filtered;
+  }
+
+  onSearchCleared(ev: CustomEvent) {
+    this.globalCountries.result = this._allGlobalCountries.result;
   }
 
   ngOnDestroy() {
@@ -98,10 +107,13 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
 
       //countries
       const countriesInfo = await this.covidInfoSvc.getGlobalLatest(args);
-      this._allGlobalCountries = countriesInfo;
-      this.globalCountries = countriesInfo;
+      this.globalCountries = { ...countriesInfo };
+      this._allGlobalCountries = { ...countriesInfo };
     } catch(e) {
       //ignore...
+      if(AppConstant.DEBUG) {
+        throw e;
+      }
     } finally {
       await this._renderCharts();
     }

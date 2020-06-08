@@ -92,15 +92,16 @@
   <ion-card class="countries-card">
     <ion-card-header>
       <ion-item>
-          <ion-icon name="people" slot="start"></ion-icon>
-          <ion-label>{{'dashboard.countries' | localizedresource | async}}</ion-label>
+        <ion-icon name="globe" slot="start"></ion-icon>
+        <ion-label>{{'dashboard.countries' | localizedresource | async}}</ion-label>
       </ion-item>
     </ion-card-header>
     <ion-card-content class="custom-table">
-      <div class="visitor-card-bar">
-        <div class="visitor-card-bar-left">
-            <ion-searchbar animated debounce="500" placeholder="" 
-              [(ngModel)]="searchText" (ngModelChange)="onVisitorSearchChanged()"></ion-searchbar>
+      <div class="countries-card-bar">
+        <div class="countries-card-bar-left">
+          <ion-searchbar animated debounce="500" placeholder="" 
+              [(ngModel)]="searchText" (ionChange)="onSearchChanged($event)" 
+              (ionClear)="onSearchCleared($event)"></ion-searchbar>
         </div>
       </div>
       <table *ngIf="globalCountries">
