@@ -14,7 +14,16 @@ page-home-dashboard {
                 }
             }
 
-            &.countries-card {        
+            &.countries-card {      
+              ion-card-header {
+                padding-inline-start: 0;
+                padding-inline-end: 0;
+                
+                ion-item {
+                  --padding-start: 0;
+                  --inner-padding-end: 0;
+                }
+              }  
                 ion-card-content {
                   padding-inline-start: 0;
                   padding-inline-end: 0;
