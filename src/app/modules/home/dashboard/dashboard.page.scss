@@ -16,12 +16,15 @@ page-home-dashboard {
 
             &.countries-card {        
                 ion-card-content {
+                  padding-inline-start: 0;
+                  padding-inline-end: 0;
+
                   .countries-card-bar {
                     display: flex;
                     justify-content: space-between;
         
                     .countries-card-bar-left {
-                      // width: 100%;
+                      width: 100%;
                     }
         
                     .countries-card-bar-right {
