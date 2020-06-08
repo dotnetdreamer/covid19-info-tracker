@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+
+import { NgxPubSubService } from '@pscoped/ngx-pub-sub';
+
 import { AppInjector } from './app-injector';
 import { HelperService } from './helper.service';
 import { LocalizationService } from './localization.service';
-import { NgxPubSubService } from '@pscoped/ngx-pub-sub';
+import { AppSettingService } from './app-setting.service';
 
 @Component({
     template: 'NO UI TO BE FOUND HERE!',
@@ -13,6 +16,7 @@ export class BasePage {
     protected helperSvc: HelperService;
     protected localizationSvc: LocalizationService;
     protected pubsubSvc: NgxPubSubService;
+    protected appSettingSvc: AppSettingService;
 
     //used in BackButtonDisableService
     protected canDeactivate = false;
@@ -24,6 +28,7 @@ export class BasePage {
         this.helperSvc = injector.get(HelperService);
         this.localizationSvc = injector.get(LocalizationService);
         this.pubsubSvc = injector.get(NgxPubSubService);
+        this.appSettingSvc = injector.get(AppSettingService);
     }
 
     async navigate(args: { path, params?, extras?: NavigationExtras }) {

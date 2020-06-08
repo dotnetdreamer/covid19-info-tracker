@@ -10,6 +10,7 @@ import { AppConstant } from './modules/shared/app-constant';
 import { Router } from '@angular/router';
 import { AppSettingService } from './modules/shared/app-setting.service';
 import './modules/shared/helpers';
+import { LanguageService } from './modules/language/language.service';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ export class AppComponent {
     , private router: Router, @Inject(DOCUMENT) private document: Document
     , private renderer: Renderer2
     , private pubsubSvc: NgxPubSubService, private appSettingSvc: AppSettingService
+    , private languageSvc: LanguageService
   ) {
     this.initializeApp();
   }
@@ -40,7 +42,7 @@ export class AppComponent {
   private async _subscribeToEvents() {
     this.pubsubSvc.subscribe(AppConstant.EVENT_DB_INITIALIZED, async () => {
       if(AppConstant.DEBUG) {
-          console.log('Event received: EVENT_DB_INITIALIZED');
+        console.log('Event received: EVENT_DB_INITIALIZED');
       }
 
       await this._setDefaults();
@@ -50,7 +52,7 @@ export class AppComponent {
       if(AppConstant.DEBUG) {
         console.log('EVENT_LANGUAGE_CHANGED', params);
       }
-      const { wkLangauge, reload } = params;
+      const { wkLangauge, reload, isRtl } = params;
       if(reload) {
         SplashScreen.show();
 
@@ -60,7 +62,7 @@ export class AppComponent {
           this.document.location.reload(true);
         });
       } else {
-        this.document.documentElement.dir = wkLangauge == 'en' ? 'ltr' : 'rtl';   
+        this.document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
         this.workingLanguage = wkLangauge;
         
         setTimeout(() => {
@@ -75,15 +77,18 @@ export class AppComponent {
       this.appSettingSvc.getWorkingLanguage()
     ]);
 
-    let wkl = res[1];
+    let wkl = res[0];
     if(!wkl) {
-      wkl = 'en';
-      await this.appSettingSvc.putWorkingLanguage(wkl);
+      await this._navigateTo('/language');
+    } else {
+      const lang = this.languageSvc.getLanguageByCode(wkl);
+      this.pubsubSvc.publishEvent(AppConstant.EVENT_LANGUAGE_CHANGED, { 
+        wkLangauge: wkl, 
+        reload: false,
+        isRtl: lang.isRtl
+      });
+      await this._navigateTo('/home');
     }
-    this.pubsubSvc.publishEvent(AppConstant.EVENT_LANGUAGE_CHANGED, { wkLangauge: wkl, reload: false });
-    this.workingLanguage = wkl;
-
-    await this._navigateTo('/home');
   }
 
   private async _navigateTo(path, args?, replaceUrl = false) {

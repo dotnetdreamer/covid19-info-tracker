@@ -1,0 +1,65 @@
+page-language {
+    background-image: url('/assets/images/world-map.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    ion-content {
+        --background: rgba(0,0,0, 0.8);   
+        --overflow: hidden; 
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-around;
+
+            .language-container {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                flex-wrap: wrap;
+                width: 100%;
+                max-width: 400px;
+
+                .language-box {
+                    width: 120px;
+                    height: 120px;
+                    margin: 5%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    flex-shrink: 0;
+                    border: 1px solid white;
+                    border-radius: 50%;
+
+                    ion-icon {
+                        font-size: 60px;
+                    }
+
+                    ion-label {
+                        font-size: 22px;
+                    }
+
+                    &.language-box-selected {
+                        transform: scale(1.5);
+                    }
+                } 
+            }
+
+            .button-next {
+                width: 60px;
+                height: 60px;
+                --padding-start: 0;
+                --padding-end: 0;
+
+                ion-icon {
+                    font-size: 40px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<ion-content fullscreen="true">
+  <div class="container">
+    <div class="language-container">
+      <div class="language-box" *ngFor="let lang of availableLanguages" 
+        [class.language-box-selected]="selectedLanguage?.code == lang.code" (click)="onLanguageSelected(lang)">
+        <ion-icon name="language"></ion-icon>
+        <ion-label>{{lang.name}}</ion-label>
+      </div>
+    </div>
+    <ion-button shape="round" color="primary" class="button-next" 
+      (click)="onNextButtonClicked()" [disabled]="!selectedLanguage">
+      <ion-icon name="arrow-forward-circle"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>
