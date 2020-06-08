@@ -24,10 +24,10 @@
                   <div class="box-body">
                       <div class="box-widget">
                           <h2>
-                              <span class="bg-green">{{'common.cases' | localizedresource | async}}</span>
+                              <span class="bg-blue">{{'common.cases' | localizedresource | async}}</span>
                           </h2>
                           <ion-icon name="people"></ion-icon>
-                          <h4 class="text-green">{{globalInfo?.result.total}}</h4>
+                          <h4 class="text-blue">{{globalInfo?.result.total}}</h4>
                           <h5>{{'common.total' | localizedresource | async}}</h5>
                       </div>
                   </div>
@@ -52,17 +52,16 @@
                   <div class="box-body">
                       <div class="box-widget">
                           <h2>
-                              <span class="bg-blue">{{'common.cases' | localizedresource | async}}</span>
+                              <span class="bg-green">{{'common.cases' | localizedresource | async}}</span>
                           </h2>
                           <ion-icon name="log-out"></ion-icon>
-                          <h4 class="text-blue">{{globalInfo?.result.deaths}}</h4>
-                          <h5>{{'common.deaths' | localizedresource | async}}</h5>
+                          <h4 class="text-green">{{globalInfo?.result.recovered}}</h4>
+                          <h5>{{'common.recovered' | localizedresource | async}}</h5>
                       </div>
                   </div>
               </div>
           </ion-col>
           <ion-col>
-              <!-- based uplon opening and closing time of organization -->
               <div class="box">
                   <div class="box-body">
                       <div class="box-widget">
@@ -70,8 +69,8 @@
                               <span class="bg-red">{{'common.cases' | localizedresource | async}}</span>
                           </h2>
                           <ion-icon name="alert"></ion-icon>
-                          <h4 class="text-red">{{globalInfo?.result.recovered}}</h4>
-                          <h5>{{'common.recovered' | localizedresource | async}}</h5>
+                          <h4 class="text-red">{{globalInfo?.result.deaths}}</h4>
+                          <h5>{{'common.deaths' | localizedresource | async}}</h5>
                       </div>
                   </div>
               </div>
@@ -80,4 +79,67 @@
       </ion-grid>
     </ion-card-content>
   </ion-card>
+  <ion-card>
+    <ion-card-content [class.skeleton-loading]="!categoryChartOptions">
+      <apx-chart #categoryChart *ngIf="categoryChartOptions" 
+      [series]="categoryChartOptions.series"
+      [chart]="categoryChartOptions.chart"
+      [legend]="categoryChartOptions.legend"
+      [labels]="categoryChartOptions.labels"
+    ></apx-chart>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="countries-card">
+    <ion-card-header>
+      <ion-item>
+          <ion-icon name="people" slot="start"></ion-icon>
+          <ion-label>{{'dashboard.countries' | localizedresource | async}}</ion-label>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content class="custom-table">
+      <table *ngIf="globalCountries">
+          <thead>
+            <tr>
+              <th>{{'dashboard.name' | localizedresource | async}}</th>
+              <th>{{'common.total' | localizedresource | async}}</th>
+              <th>{{'common.active' | localizedresource | async}}</th>
+              <th>{{'common.recovered' | localizedresource | async}}</th>
+              <th>{{'common.deaths' | localizedresource | async}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let country of globalCountries.result">
+              <td>{{ country }}</td>
+            </tr>
+              <!-- <tr *ngFor="let visitor of visitors">
+                  <td class="table-icon" [ngSwitch]="visitor.documentTypeId">
+                      <ion-icon name="card" *ngSwitchCase="1"></ion-icon>
+                      <ion-icon name="paper" *ngSwitchCase="2"></ion-icon>
+                      <ion-icon name="attach" *ngSwitchCase="3"></ion-icon>
+                      <ion-icon name="close" *ngSwitchDefault></ion-icon>
+                  </td>
+                  <td>
+                      <strong [innerHTML]="visitor.fullName | highlightsearch: searchText"></strong>
+                      <div [innerHTML]="(visitor.company | localized: 'name' | async) | highlightsearch: searchText"></div>
+                      <div>{{visitor.contact}}</div>
+                  </td>
+                  <td>{{ visitor.attendee }}</td>
+                  <td>
+                      <ion-badge color="primary">{{ visitor.checkIn }}</ion-badge>
+                  </td>
+                  <td>
+                      <ion-button fill="clear" *ngIf="!visitor.checkOut" (click)="onVisitorCheckOutClicked(visitor)">
+                          <ion-icon name="log-out"></ion-icon>
+                      </ion-button>
+                      <ion-badge color="secondary" *ngIf="visitor.checkOut">{{ visitor.checkOut }}</ion-badge>
+                  </td>
+                  <td>
+                      <div [innerHTML]="visitor.tokenNo | highlightsearch: searchText"></div>
+                  </td>
+                  <td class="more"><ion-icon ios="md-more" md="md-more"></ion-icon></td>
+              </tr> -->
+          </tbody>
+      </table>
+  </ion-card-content>
+</ion-card>
 </ion-content>

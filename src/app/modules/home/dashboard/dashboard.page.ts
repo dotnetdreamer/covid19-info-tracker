@@ -10,7 +10,7 @@ import { BasePage } from '../../shared/base.page';
 import { AppConstant } from '../../shared/app-constant';
 import { Subscription } from 'rxjs';
 import { CovidInfoService } from '../covid-info/covid-info.service';
-import { IGlobalInfo } from '../covid-info/covid-info.model';
+import { IGlobalInfo, IGlobalLatest } from '../covid-info/covid-info.model';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -46,6 +46,8 @@ export type CategoryChartOptions = {
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardPage extends BasePage implements OnInit, OnDestroy {
+  categoryChartOptions: Partial<CategoryChartOptions>;
+
   globalInfo: IGlobalInfo = {
     result: {
       confirmed: 0,
@@ -54,6 +56,7 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
       recovered: 0
     }
   };
+  globalCountries: IGlobalLatest;
 
   constructor(private covidInfoSvc: CovidInfoService) { 
     super();
@@ -85,14 +88,43 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
       const info = await this.covidInfoSvc.getGlobal(args);
       info.result.total = info.result.confirmed + info.result.deaths + info.result.recovered;
       this.globalInfo = info;
+
+      //countries
+      const countriesInfo = await this.covidInfoSvc.getGlobalLatest(args);
+      this.globalCountries = countriesInfo;
     } catch(e) {
       //ignore...
+    } finally {
+      await this._renderCharts();
     }
 
   }
 
   private async _renderCharts() {
-   
+    const gInfoData = [
+      this.globalInfo.result.total,
+      this.globalInfo.result.confirmed,
+      this.globalInfo.result.recovered,
+      this.globalInfo.result.deaths,
+    ];
+    const gInfoLabels = await Promise.all([
+      this.localizationSvc.getResource('common.total'),
+      this.localizationSvc.getResource('common.confirmed'),
+      this.localizationSvc.getResource('common.recovered'),
+      this.localizationSvc.getResource('common.deaths'),
+    ]);
+
+    this.categoryChartOptions = {
+      series: gInfoData,
+      chart: {
+        height: 320,
+        type: "pie"
+      },
+      legend: {
+        position: 'bottom'
+      },
+      labels: [gInfoLabels[0], gInfoLabels[1], gInfoLabels[2], gInfoLabels[3]]
+    };
   }
 
   private _subscribeToEvents() {

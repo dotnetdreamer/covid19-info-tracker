@@ -13,6 +13,11 @@ page-home-dashboard {
                     padding: 0;
                 }
             }
+
+            &.countries-card {        
+                ion-card-content {
+                }
+            }
         }
 
         .box {
