@@ -1,4 +1,126 @@
-.welcome-card img {
-  max-height: 35vh;
-  overflow: hidden;
+ion-tabs {
+  ion-tab-bar {
+      justify-content: space-between;
+      --ion-tab-bar-background: none;
+      --ion-background-color: transparent;
+      --border: none;
+      --background: transparent !important;
+      contain: none;
+      width: 100%;
+      bottom: 0;
+      position: fixed;
+
+      &:before, &:after {
+          content: '';
+          position: absolute;
+      }
+
+      // &:before {
+      //     bottom: -18px;
+      //     background: rgb(244, 246, 247);
+      //     height: 50px;
+      //     z-index: -1;
+      //     width: 100%;
+      // }
+
+      &:after {
+          background-image: url('/assets/images/bottom-bar.svg');
+          background-repeat: no-repeat;
+          background-position: center 0px;
+          // background-color: var(--ion-color-primary);
+          height: 56px;
+          width: 100%;
+          background-size: cover;
+          z-index: -1;
+          border-top-right-radius: 15px;
+          border-top-left-radius: 15px;
+          overflow: hidden;
+      }
+
+      ion-tab-button {
+          --color: #b0b0b0;
+          --color-selected: #b0b0b0;
+
+          &.tab-selected {
+              color: var(--fi-color-1) !important;
+              --color: var(--fi-color-1) !important;
+              --color-selected: var(--fi-color-1) !important;        
+          }
+
+          ion-icon {
+            font-size: 34px;
+            color: var(--ion-color-secondary);
+          }
+
+          &.home {
+              height: 60px;
+              max-width: 60px;
+              border-radius: 50%;
+              position: relative;
+              --color: #fff;
+              --color-selected: #fff;
+              bottom: 8px;
+              background: var(--ion-color-primary);
+
+              ion-icon {
+                font-size: 36px;
+                color: #fff;
+              }
+          }
+      }
+  }
+
+  //only where tab is showing...
+  page-home-dashboard {
+      ion-content {
+        //60px = tab height
+        --padding-bottom: 60px !important;
+      }
+  }
+}
+
+
+@media (min-width: 768px) {
+  ion-tabs{
+      ion-tab-bar{
+          ion-tab-button {
+              &.home {
+                  margin-bottom: 0;
+                  max-width: 80px;
+                  height: 80px;
+                  bottom: 20px;
+
+                  ion-icon {
+                    font-size: 60px;
+                  }
+              }
+
+              ion-icon{
+                font-size: 70px;
+              }
+          }
+      }
+  }
+}
+
+@media (min-width: 1024px) {
+  ion-tabs{
+      ion-tab-bar{
+          ion-tab-button {
+              &.home {
+                max-width: 90px;
+                height: 90px;
+                bottom: 22px;
+
+                ion-icon{
+                  font-size: 65px;
+                }
+              }
+
+              ion-icon{
+                font-size: 70px;
+              }
+          }
+      }
+  }
 }

@@ -87,17 +87,17 @@ page-home-dashboard {
               display: inline-block;
         
               &.bg-green {
-                background-color: #45B6B0 !important;
+                background-color: var(--ion-color-success) !important;
               }
         
               &.bg-red {
-                background-color: #FF6B6B !important;
+                background-color: var(--ion-color-danger) !important;
               }
               &.bg-aqua {
-                background-color: #65C3DF !important;
+                background-color: var(--ion-color-secondary) !important;
               }
               &.bg-blue {
-                background-color: #1688EC !important;
+                background-color: var(--ion-color-primary) !important;
               }
             }
         
