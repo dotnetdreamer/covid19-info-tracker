@@ -13,8 +13,8 @@
   </ion-refresher>
   <ion-card class="report-card">
     <ion-card-header>
-      <ion-icon name="pie"></ion-icon>
-      Summary
+      <ion-icon name="pie-chart"></ion-icon>
+      <ion-label>{{'dashboard.summary' | localizedresource | async}}</ion-label>
     </ion-card-header>
     <ion-card-content>
       <ion-grid>
@@ -24,7 +24,7 @@
                   <div class="box-body">
                       <div class="box-widget">
                           <h2>
-                              <span class="bg-blue">{{'common.cases' | localizedresource | async}}</span>
+                            <span class="bg-blue">{{'common.cases' | localizedresource | async}}</span>
                           </h2>
                           <ion-icon name="people"></ion-icon>
                           <h4 class="text-blue">{{globalInfo?.result.total}}</h4>
@@ -54,7 +54,7 @@
                           <h2>
                               <span class="bg-green">{{'common.cases' | localizedresource | async}}</span>
                           </h2>
-                          <ion-icon name="log-out"></ion-icon>
+                          <ion-icon name="bulb"></ion-icon>
                           <h4 class="text-green">{{globalInfo?.result.recovered}}</h4>
                           <h5>{{'common.recovered' | localizedresource | async}}</h5>
                       </div>
@@ -80,21 +80,19 @@
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-card-content [class.skeleton-loading]="!categoryChartOptions">
-      <apx-chart #categoryChart *ngIf="categoryChartOptions" 
-      [series]="categoryChartOptions.series"
-      [chart]="categoryChartOptions.chart"
-      [legend]="categoryChartOptions.legend"
-      [labels]="categoryChartOptions.labels"
+    <ion-card-content [class.skeleton-loading]="!globalInfoChartOptions">
+      <apx-chart #categoryChart *ngIf="globalInfoChartOptions" 
+      [series]="globalInfoChartOptions.series"
+      [chart]="globalInfoChartOptions.chart"
+      [legend]="globalInfoChartOptions.legend"
+      [labels]="globalInfoChartOptions.labels"
     ></apx-chart>
     </ion-card-content>
   </ion-card>
   <ion-card class="countries-card">
     <ion-card-header>
-      <ion-item lines="none">
-        <ion-icon name="globe" slot="start"></ion-icon>
-        <ion-label>{{'dashboard.countries' | localizedresource | async}}</ion-label>
-      </ion-item>
+      <ion-icon name="globe"></ion-icon>
+      <ion-label>{{'dashboard.countries' | localizedresource | async}}</ion-label>
     </ion-card-header>
     <ion-card-content class="custom-table">
       <div class="countries-card-bar">
@@ -115,7 +113,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let item of globalCountries.result">
-              <td>{{ item['countryName'] }}</td>
+              <td><strong [innerHTML]="item['countryName'] | highlightsearch: searchText"></strong></td>
               <td><ion-badge color="primary">{{ item.confirmed }}</ion-badge></td>
               <td><ion-badge color="primary">{{ item.recovered }}</ion-badge></td>
               <td><ion-badge color="danger">{{ item.deaths }}</ion-badge></td>

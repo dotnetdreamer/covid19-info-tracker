@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'language',
     loadChildren: () => import('./modules/language/language.module').then( m => m.LanguagePageModule)
+  },
+  {
+    path: 'generic',
+    loadChildren: () => import('./modules/generic/generic.common.module').then( m => m.GenericCommonModule)
   }
 ];
 @NgModule({

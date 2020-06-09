@@ -86,17 +86,17 @@ ion-tabs {
           ion-tab-button {
               &.home {
                   margin-bottom: 0;
-                  max-width: 80px;
-                  height: 80px;
-                  bottom: 20px;
+                  max-width: 60px;
+                  height: 60px;
+                  bottom: 12px;
 
                   ion-icon {
-                    font-size: 60px;
+                    font-size: 36px;
                   }
               }
 
               ion-icon{
-                font-size: 70px;
+                font-size: 36px;
               }
           }
       }
@@ -108,17 +108,17 @@ ion-tabs {
       ion-tab-bar{
           ion-tab-button {
               &.home {
-                max-width: 90px;
-                height: 90px;
-                bottom: 22px;
+                max-width: 80px;
+                height: 80px;
+                bottom: 16px;
 
                 ion-icon{
-                  font-size: 65px;
+                  font-size: 40px;
                 }
               }
 
-              ion-icon{
-                font-size: 70px;
+              ion-icon {
+                font-size: 40px;
               }
           }
       }

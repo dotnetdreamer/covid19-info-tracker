@@ -1,20 +1,19 @@
 <ion-tabs #homeTabs>
     <ion-tab-bar>
-      <ion-tab-button (click)="onTabClicked('expense')" [class.tab-selected]="selectedTab === 'expense'">
+      <ion-tab-button (click)="onTabClicked('abc')" [class.tab-selected]="selectedTab === 'abc'">
         <ion-icon name="globe" ios="globe" md="globe"></ion-icon>
       </ion-tab-button>
-      <ion-tab-button (click)="onTabClicked('profile')" [class.tab-selected]="selectedTab === 'profile'">
-          <ion-icon ios="globe" md="globe"></ion-icon>
+      <ion-tab-button (click)="onTabClicked('care')" [class.tab-selected]="selectedTab === 'care'">
+        <ion-icon name="medkit"></ion-icon>
       </ion-tab-button>
       <ion-tab-button class="home" (click)="onTabClicked('home')" [class.tab-selected]="selectedTab === 'home'">
         <ion-icon name="globe" ios="globe" md="globe"></ion-icon>
       </ion-tab-button>
-      <ion-tab-button (click)="onTabClicked('explore-university')" [class.tab-selected]="selectedTab === 'explore-university'">
-          <ion-icon ios="globe" md="globe"></ion-icon>
+      <ion-tab-button (click)="onTabClicked('explore')" [class.tab-selected]="selectedTab === 'explore'">
+        <ion-icon ios="globe" md="globe"></ion-icon>
       </ion-tab-button>
-
       <ion-tab-button (click)="onTabClicked('about')" [class.tab-selected]="selectedTab === 'about'">
-          <ion-icon ios="globe" md="globe"></ion-icon>
+        <ion-icon name="information"></ion-icon>
       </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

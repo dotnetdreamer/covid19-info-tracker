@@ -3,40 +3,18 @@ import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, AfterViewI
 import * as moment from 'moment';
 import {
   ApexAxisChartSeries, ApexChart, ApexDataLabels, ApexXAxis, ApexPlotOptions,
-  ApexNonAxisChartSeries, ApexLegend, ApexYAxis, ApexGrid, ApexStroke, ApexTitleSubtitle
+  ApexNonAxisChartSeries, ApexLegend, ApexYAxis, ApexGrid, ApexStroke, ApexTitleSubtitle, ApexResponsive
 } from "ng-apexcharts";
-import { AlertController } from '@ionic/angular';
 import { BasePage } from '../../shared/base.page';
 import { AppConstant } from '../../shared/app-constant';
-import { Subscription } from 'rxjs';
-import { CovidInfoService } from '../covid-info/covid-info.service';
-import { IGlobalInfo, IGlobalLatest, IGlobalLatestTransformed } from '../covid-info/covid-info.model';
-
-export type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  yaxis: ApexYAxis;
-  dataLabels: ApexDataLabels;
-  grid: ApexGrid;
-  stroke: ApexStroke;
-  title: ApexTitleSubtitle;
-  legend: ApexLegend;
-};
-
-export type DateChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  xaxis: ApexXAxis;
-};
+import { IGlobalInfo, IGlobalLatest, IGlobalLatestTransformed } from '../../generic/covid-info/covid-info.model';
+import { CovidInfoService } from '../../generic/covid-info/covid-info.service';
 
 export type CategoryChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
   labels: any;
-  legend: ApexLegend;
+  legend: ApexLegend
 };
 
 @Component({
@@ -47,7 +25,7 @@ export type CategoryChartOptions = {
 })
 export class DashboardPage extends BasePage implements OnInit, OnDestroy {
   searchText = "";
-  categoryChartOptions: Partial<CategoryChartOptions>;
+  globalInfoChartOptions: Partial<CategoryChartOptions>;
   globalInfo: IGlobalInfo = {
     result: {
       confirmed: 0,
@@ -134,10 +112,10 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
       this.localizationSvc.getResource('common.deaths'),
     ]);
 
-    this.categoryChartOptions = {
+    this.globalInfoChartOptions = {
       series: gInfoData,
       chart: {
-        height: 320,
+        height: 420,
         type: "pie"
       },
       legend: {

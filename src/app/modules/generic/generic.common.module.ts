@@ -11,4 +11,4 @@ const routes: Routes = [
   ],
   providers: []
 })
-export class GeneralCommonModule {}
+export class GenericCommonModule {}

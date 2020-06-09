@@ -5,14 +5,30 @@ page-home-dashboard {
         }
     }
     ion-content {
-        ion-card {
-             &.report-card{
-                box-shadow: none;
+      ion-card {
+        background: transparent;
 
-                ion-card-content {
-                    padding: 0;
-                }
-            }
+        ion-card-header {
+          display: flex;
+          align-items: center;
+
+          ion-icon {
+            font-size: 22px;
+          }
+
+          ion-label {
+            font-size: 20px;
+            margin: 0 5px;
+          }
+        }
+
+        &.report-card{
+          box-shadow: none;
+
+          ion-card-content {
+            padding: 0;
+          }
+        }
 
             &.countries-card {      
               ion-card-header {

@@ -24,6 +24,7 @@
     },
     "dashboard": {
         "countries": "Countries",
-        "name": "Name"
+        "name": "Name",
+        "summary": "Summary"
     }
 }

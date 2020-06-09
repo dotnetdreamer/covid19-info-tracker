@@ -8,7 +8,7 @@ import { SchemaService } from './db/schema.service';
 import { AppConstant } from './app-constant';
 import { AppInjector } from './app-injector';
 import { DbWebService } from './db/db-web.service';
-import { ICountry } from '../home/covid-info/covid-info.model';
+import { ICountry } from '../generic/covid-info/covid-info.model';
 
 @Injectable({
     providedIn: 'root'
