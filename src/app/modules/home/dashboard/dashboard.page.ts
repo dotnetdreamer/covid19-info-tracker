@@ -100,13 +100,11 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
 
   private async _renderCharts() {
     const gInfoData = [
-      this.globalInfo.result.total,
       this.globalInfo.result.confirmed,
       this.globalInfo.result.recovered,
       this.globalInfo.result.deaths,
     ];
     const gInfoLabels = await Promise.all([
-      this.localizationSvc.getResource('common.total'),
       this.localizationSvc.getResource('common.confirmed'),
       this.localizationSvc.getResource('common.recovered'),
       this.localizationSvc.getResource('common.deaths'),
@@ -121,7 +119,7 @@ export class DashboardPage extends BasePage implements OnInit, OnDestroy {
       legend: {
         position: 'bottom'
       },
-      labels: [gInfoLabels[0], gInfoLabels[1], gInfoLabels[2], gInfoLabels[3]]
+      labels: [gInfoLabels[0], gInfoLabels[1], gInfoLabels[2]]
     };
   }
 
