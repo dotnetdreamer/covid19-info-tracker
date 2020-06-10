@@ -53,8 +53,8 @@ ion-tabs {
           }
 
           &.home {
-              height: 60px;
-              max-width: 60px;
+              height: 65px;
+              max-width: 65px;
               border-radius: 50%;
               position: relative;
               --color: #fff;
@@ -86,8 +86,6 @@ ion-tabs {
           ion-tab-button {
               &.home {
                   margin-bottom: 0;
-                  max-width: 60px;
-                  height: 60px;
                   bottom: 12px;
 
                   ion-icon {
@@ -108,8 +106,8 @@ ion-tabs {
       ion-tab-bar{
           ion-tab-button {
               &.home {
-                max-width: 80px;
-                height: 80px;
+                max-width: 85px;
+                height: 85px;
                 bottom: 16px;
 
                 ion-icon{

@@ -1,0 +1,25 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>{{'settings.title' | localizedresource | async}}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content class="ion-padding">
+  <div class="outer-container">
+    <div class="container">
+      <div class="container-icon">
+        <ion-icon name="settings"></ion-icon>
+      </div>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">{{'language.title' | localizedresource | async}}</ion-label>
+          <ion-select [value]="selectedLanguage?.code" interface="popover" 
+            (ionChange)="onLanguageChanged($event)">
+            <ion-select-option [value]="lang.code" *ngFor="let lang of languages">
+              {{lang.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

@@ -5,15 +5,19 @@
       </ion-tab-button>
       <ion-tab-button (click)="onTabClicked('care')" [class.tab-selected]="selectedTab === 'care'">
         <ion-icon name="medkit"></ion-icon>
+        <ion-label>{{'care.world' | localizedresource | async}}</ion-label>
       </ion-tab-button>
       <ion-tab-button class="home" (click)="onTabClicked('home')" [class.tab-selected]="selectedTab === 'home'">
         <ion-icon name="globe" ios="globe" md="globe"></ion-icon>
-      </ion-tab-button>
-      <ion-tab-button (click)="onTabClicked('explore')" [class.tab-selected]="selectedTab === 'explore'">
-        <ion-icon ios="globe" md="globe"></ion-icon>
+        <ion-label>{{'dashboard.world' | localizedresource | async}}</ion-label>
       </ion-tab-button>
       <ion-tab-button (click)="onTabClicked('about')" [class.tab-selected]="selectedTab === 'about'">
-        <ion-icon name="information"></ion-icon>
+        <ion-icon ios="information" md="information"></ion-icon>
+        <ion-label>{{'about.title' | localizedresource | async}}</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="onTabClicked('settings')" [class.tab-selected]="selectedTab === 'settings'">
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>{{'settings.title' | localizedresource | async}}</ion-label>
       </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

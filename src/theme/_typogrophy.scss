@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Cronos Pro';
+    src: url('./assets/fonts/cronospro/Cronos-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Cronos Pro';
+    src: url('./assets/fonts/cronospro/Cronos-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Cronos Pro';
+    src: url('./assets/fonts/cronospro/Cronos-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+  }
+  @font-face {
+    font-family: 'Droid Arabic Kufi';
+    src: url('./assets/fonts/droid_kufi/droidarabickufi_regular/DroidKufi-Regular.eot');
+    src: url('./assets/fonts/droid_kufi/droidarabickufi_regular/DroidKufi-Regular.eot?#iefix') format('embedded-opentype'),
+     url('./assets/fonts/droid_kufi/droidarabickufi_regular/DroidKufi-Regular.woff2') format('woff2'),
+     url('./assets/fonts/droid_kufi/droidarabickufi_regular/DroidKufi-Regular.woff') format('woff'),
+     url('./assets/fonts/droid_kufi/droidarabickufi_regular/DroidKufi-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+   
+  @font-face {
+    font-family: 'Droid Arabic Kufi';
+    src: url('./assets/fonts/droid_kufi/droidarabickufi_bold/DroidKufi-Bold.eot');
+    src: url('./assets/fonts/droid_kufi/droidarabickufi_bold/DroidKufi-Bold.eot?#iefix') format('embedded-opentype'),
+     url('./assets/fonts/droid_kufi/droidarabickufi_bold/DroidKufi-Bold.woff2') format('woff2'),
+     url('./assets/fonts/droid_kufi/droidarabickufi_bold/DroidKufi-Bold.woff') format('woff'),
+     url('./assets/fonts/droid_kufi/droidarabickufi_bold/DroidKufi-Bold.ttf') format('truetype');
+    font-weight: 700; 
+    font-style: normal;
+  }
+  .en{
+    font-family: 'Cronos Pro', 'Droid Arabic Kufi' !important;
+    --ion-font-family: 'Cronos Pro', 'Droid Arabic Kufi' !important;
+  
+    h1, h2, h3, h4, h5, h6, p, div, span, button, input, textarea, select, ion-label, ion-title {
+      font-family: 'Cronos Pro', 'Droid Arabic Kufi' !important;     
+    }
+  }
+  .ae{
+    font-family: 'Droid Arabic Kufi', 'Cronos Pro' !important;  
+    --ion-font-family: 'Droid Arabic Kufi', 'Cronos Pro' !important;
+    letter-spacing: 0; 
+  
+    h1, h2, h3, h4, h5, h6, p, div, span, button, input, textarea, select, ion-label, ion-title {
+      font-family: 'Droid Arabic Kufi', 'Cronos Pro' !important; 
+      letter-spacing: 0; 
+    }  
+  }
+  .ltr {
+    direction: ltr !important;
+  }
+  .rtl {
+    direction: rtl !important;
+  }

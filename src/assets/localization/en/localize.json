@@ -25,6 +25,19 @@
     "dashboard": {
         "countries": "Countries",
         "name": "Name",
-        "summary": "Summary"
+        "summary": "Summary",
+        "world": "World"
+    },
+    "language": {
+        "title": "Language"
+    },
+    "settings": {
+        "title": "Settings"
+    },
+    "about": {
+        "title": "About"
+    },
+    "care": {
+        "title": "Care"
     }
 }

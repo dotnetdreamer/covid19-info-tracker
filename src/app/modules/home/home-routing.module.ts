@@ -17,6 +17,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'settings',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../generic/settings/settings.module').then( m => m.SettingsPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full'
