@@ -13,7 +13,7 @@ import { IonTabs } from '@ionic/angular';
 export class HomePage extends BasePage {
   @ViewChild('homeTabs') homeTabs : IonTabs;
 
-  selectedTab = 'dashboard';
+  selectedTab = 'home';
   constructor() {
     super();
   }
@@ -24,7 +24,7 @@ export class HomePage extends BasePage {
       console.log('selectedTab', this.selectedTab);
     }
 
-    if(selectedTab === 'dashboard') {
+    if(selectedTab === 'home') {
       await this.router.navigate(['/home'], { replaceUrl: true });
     } else {
       this.homeTabs.select(selectedTab);

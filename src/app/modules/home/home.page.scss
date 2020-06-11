@@ -62,9 +62,12 @@ ion-tabs {
               bottom: 8px;
               background: var(--ion-color-primary);
 
+              ion-icon, ion-label {
+                color: #fff;
+              }
+              
               ion-icon {
                 font-size: 36px;
-                color: #fff;
               }
           }
       }

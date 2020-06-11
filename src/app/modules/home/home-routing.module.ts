@@ -21,7 +21,25 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: () => import('../generic/settings/settings.module').then( m => m.SettingsPageModule)
+            loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'about',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+          }
+        ]
+      },
+      {
+        path: 'care',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('./care/care.module').then( m => m.CarePageModule)
           }
         ]
       },

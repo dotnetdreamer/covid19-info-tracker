@@ -108,6 +108,7 @@
               <th>{{'common.active' | localizedresource | async}}</th>
               <th>{{'common.recovered' | localizedresource | async}}</th>
               <th>{{'common.deaths' | localizedresource | async}}</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -116,32 +117,12 @@
               <td><ion-badge color="primary">{{ item.confirmed }}</ion-badge></td>
               <td><ion-badge color="primary">{{ item.recovered }}</ion-badge></td>
               <td><ion-badge color="danger">{{ item.deaths }}</ion-badge></td>
+              <td>
+                <ion-button fill="clear">
+                  <ion-icon slot="icon-only" name="information"></ion-icon>
+                </ion-button>
+              </td>
             </tr>
-              <!-- <tr *ngFor="let visitor of visitors">
-                  <td class="table-icon" [ngSwitch]="visitor.documentTypeId">
-                      <ion-icon name="card" *ngSwitchCase="1"></ion-icon>
-                      <ion-icon name="paper" *ngSwitchCase="2"></ion-icon>
-                      <ion-icon name="attach" *ngSwitchCase="3"></ion-icon>
-                      <ion-icon name="close" *ngSwitchDefault></ion-icon>
-                  </td>
-                  <td>
-                      <strong [innerHTML]="visitor.fullName | highlightsearch: searchText"></strong>
-                      <div [innerHTML]="(visitor.company | localized: 'name' | async) | highlightsearch: searchText"></div>
-                      <div>{{visitor.contact}}</div>
-                  </td>
-                  <td>{{ visitor.attendee }}</td>
-                  <td><ion-badge color="primary">{{ visitor.checkIn }}</ion-badge></td>
-                  <td>
-                      <ion-button fill="clear" *ngIf="!visitor.checkOut" (click)="onVisitorCheckOutClicked(visitor)">
-                          <ion-icon name="log-out"></ion-icon>
-                      </ion-button>
-                      <ion-badge color="secondary" *ngIf="visitor.checkOut">{{ visitor.checkOut }}</ion-badge>
-                  </td>
-                  <td>
-                      <div [innerHTML]="visitor.tokenNo | highlightsearch: searchText"></div>
-                  </td>
-                  <td class="more"><ion-icon ios="md-more" md="md-more"></ion-icon></td>
-              </tr> -->
           </tbody>
       </table>
   </ion-card-content>
