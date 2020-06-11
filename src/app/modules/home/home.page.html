@@ -5,7 +5,7 @@
       </ion-tab-button>
       <ion-tab-button (click)="onTabClicked('care')" [class.tab-selected]="selectedTab === 'care'">
         <ion-icon name="medkit"></ion-icon>
-        <ion-label>{{'care.world' | localizedresource | async}}</ion-label>
+        <ion-label>{{'care.title' | localizedresource | async}}</ion-label>
       </ion-tab-button>
       <ion-tab-button class="home" (click)="onTabClicked('home')" [class.tab-selected]="selectedTab === 'home'">
         <ion-icon name="globe" ios="globe" md="globe"></ion-icon>

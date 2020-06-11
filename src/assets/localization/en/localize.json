@@ -38,6 +38,8 @@
         "title": "About"
     },
     "care": {
-        "title": "Care"
+        "title": "Care",
+        "symptoms": "Symptoms",
+        "precautions": "Precautions"
     }
 }

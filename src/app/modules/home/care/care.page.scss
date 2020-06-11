@@ -1,0 +1,16 @@
+page-home-care {
+    ion-content {        
+        .outer-container {
+            padding-top: 50px;
+
+            .container {
+                height: 100%;
+
+                .symptoms, .precautions {
+                    overflow-y: scroll;
+                    height: calc(100% - 2vh);
+                }
+            }
+        }
+    }
+}

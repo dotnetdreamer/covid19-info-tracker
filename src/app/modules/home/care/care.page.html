@@ -1,56 +1,73 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>care</ion-title>
+    <ion-segment [value]="selectedSegment" (ionChange)="onSegmentChanged($event)">
+      <ion-segment-button value="symptoms">
+        <ion-label>{{'care.symptoms' | localizedresource | async}}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="precautions">
+        <ion-label>{{'care.precautions' | localizedresource | async}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-  Symptoms
-  Call your doctor: If you think you have been exposed to COVID-19 and develop a fever and symptoms, such as cough or difficulty breathing, call your healthcare provider for medical advice.
-  
-  Watch for symptoms
-  
-  Reported illnesses have ranged from mild symptoms to severe illness and death for confirmed coronavirus disease 2019 (COVID-19) cases.
-  
-  The following symptoms may appear days after exposure.*
-  
-  Fever
-  Cough
-  Shortness of breath
-  If you develop emergency warning signs for COVID-19 get medical attention immediately. Emergency warning signs include*:
-  
-  Difficulty breathing or shortness of breath
-  Persistent pain or pressure in the chest
-  New confusion or inability to arouse
-  Bluish lips or face
-  Precautions
-  Stay aware of the latest information on the COVID-19 outbreak, Most people who become infected experience mild illness and recover, but it can be more severe for others. Take care of your health and protect others by doing the following:
-  
-  What you can do
-  
-  Wash your hands frequently
-  Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.
-  Why? Washing your hands with soap and water or using alcohol-based hand rub kills viruses that may be on your hands.
-  
-  Maintain social distancing
-  Maintain at least 1 meter (3 feet) distance between yourself and anyone who is coughing or sneezing.
-  Why?When someone coughs or sneezes they spray small liquid droplets from their nose or mouth which may contain virus. If you are too close, you can breathe in the droplets, including the COVID-19 virus if the person coughing has the disease.
-  
-  Avoid touching eyes, nose and mouth
-  Why?Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body and can make you sick.
-  
-  Practice respiratory hygiene
-  Make sure you, and the people around you, follow good respiratory hygiene. This means covering your mouth and nose with your bent elbow or tissue when you cough or sneeze. Then dispose of the used tissue immediately.
-  Why?Droplets spread virus. By following good respiratory hygiene you protect the people around you from viruses such as cold, flu and COVID-19.
-  
-  Stay home if you feel unwell.
-  If you have a fever, cough and difficulty breathing, seek medical attention and call in advance. Follow the directions of your local health authority.
-  Why? National and local authorities will have the most up to date information on the situation in your area. Calling in advance will allow your health care provider to quickly direct you to the right health facility. This will also protect you and help prevent spread of viruses and other infections. Stay informed and follow advice given by your healthcare provider.
-  
-  Protection measures for persons who are in or have recently visited (past 14 days) areas where COVID-19 is spreading
-  
-  Follow the guidance outlined above.
-  Stay at home if you begin to feel unwell, even with mild symptoms such as headache and slight runny nose, until you recover. Why? Avoiding contact with others and visits to medical facilities will allow these facilities to operate more effectively and help protect you and others from possible COVID-19 and other viruses.
-  If you develop symptoms, Call in advance and tell your provider of any recent travel or contact with travelers.Why? Calling in advance will allow your health care provider to quickly direct you to the right health facility. This will also help to prevent possible spread of COVID-19 and other viruses.
-  *This list is not all inclusive. Please consult your medical provider for any other symptoms that are severe or concerning.
+<ion-content class="ion-padding">
+  <div class="outer-container">
+    <div class="container">
+      <div class="container-icon">
+        <ion-icon name="medkit"></ion-icon>
+      </div>
+      <div class="symptoms" *ngIf="selectedSegment == 'symptoms'">
+        <ion-text>
+          <p>Call your doctor: If you think you have been exposed to COVID-19 and develop a fever and symptoms, such as cough or difficulty breathing, call your healthcare provider for medical advice.</p>
+          <h1>Watch for symptoms</h1>
+          <p>Reported illnesses have ranged from mild symptoms to severe illness and death for confirmed coronavirus disease 2019 (COVID-19) cases.</p>
+          <p>  The following symptoms may appear days after exposure</p>
+          <ul>
+            <li>Fever</li>
+            <li>Cough</li>
+            <li>Shortness of breath</li>
+          </ul>
+        </ion-text>
+        <ion-text>
+          <p>
+            If you develop emergency warning signs for COVID-19 get medical attention immediately. Emergency warning signs include*:
+    
+            Difficulty breathing or shortness of breath
+            Persistent pain or pressure in the chest
+            New confusion or inability to arouse
+            Bluish lips or face
+          </p>
+        </ion-text>
+      </div>
+      <div class="precautions" *ngIf="selectedSegment == 'precautions'">
+        <ion-text>
+          <p>Stay aware of the latest information on the COVID-19 outbreak, Most people who become infected experience mild illness and recover, but it can be more severe for others. Take care of your health and protect others by doing the following:       </p>
+          <h2>What you can do</h2>
+          <h4>Wash your hands frequently</h4>
+          <p>Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash them with soap and water.</p>
+          <p><strong>Why?</strong> Washing your hands with soap and water or using alcohol-based hand rub kills viruses that may be on your hands.</p>
+          <h4>Maintain social distancing</h4>
+          <p>Maintain at least 1 meter (3 feet) distance between yourself and anyone who is coughing or sneezing.</p>
+          <p><strong>Why?</strong> When someone coughs or sneezes they spray small liquid droplets from their nose or mouth which may contain virus. If you are too close, you can breathe in the droplets, including the COVID-19 virus if the person coughing has the disease.</p>
+          <h4>Avoid touching eyes, nose and mouth</h4>
+          <p><strong>Why?</strong> Hands touch many surfaces and can pick up viruses. Once contaminated, hands can transfer the virus to your eyes, nose or mouth. From there, the virus can enter your body and can make you sick.</p>
+          <h4>Practice respiratory hygiene</h4>
+          <p>Make sure you, and the people around you, follow good respiratory hygiene. This means covering your mouth and nose with your bent elbow or tissue when you cough or sneeze. Then dispose of the used tissue immediately.</p>
+          <p><strong>Why?</strong> Droplets spread virus. By following good respiratory hygiene you protect the people around you from viruses such as cold, flu and COVID-19.</p>
+          <h4>Stay home if you feel unwell</h4>
+          <p>If you have a fever, cough and difficulty breathing, seek medical attention and call in advance. Follow the directions of your local health authority.</p>
+          <p><strong>Why?</strong> National and local authorities will have the most up to date information on the situation in your area. Calling in advance will allow your health care provider to quickly direct you to the right health facility. This will also protect you and help prevent spread of viruses and other infections. Stay informed and follow advice given by your healthcare provider.</p>
+        </ion-text>
+        <ion-text>
+          <p>Protection measures for persons who are in or have recently visited (past 14 days) areas where COVID-19 is spreading</p>
+          <ul>
+            <li>Follow the guidance outlined above.</li>
+            <li>Stay at home if you begin to feel unwell, even with mild symptoms such as headache and slight runny nose, until you recover. Why? Avoiding contact with others and visits to medical facilities will allow these facilities to operate more effectively and help protect you and others from possible COVID-19 and other viruses.</li>
+            <li>If you develop symptoms, Call in advance and tell your provider of any recent travel or contact with travelers.Why? Calling in advance will allow your health care provider to quickly direct you to the right health facility. This will also help to prevent possible spread of COVID-19 and other viruses.</li>
+          </ul>
+        </ion-text>
+      </div>
+    </div>
+  </div>
+  <p>*This list is not all inclusive. Please consult your medical provider for any other symptoms that are severe or concerning.</p>
 </ion-content>

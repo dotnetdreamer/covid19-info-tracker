@@ -108,7 +108,7 @@
               <th>{{'common.active' | localizedresource | async}}</th>
               <th>{{'common.recovered' | localizedresource | async}}</th>
               <th>{{'common.deaths' | localizedresource | async}}</th>
-              <th></th>
+              <!-- <th></th> -->
             </tr>
           </thead>
           <tbody>
@@ -117,11 +117,11 @@
               <td><ion-badge color="primary">{{ item.confirmed }}</ion-badge></td>
               <td><ion-badge color="primary">{{ item.recovered }}</ion-badge></td>
               <td><ion-badge color="danger">{{ item.deaths }}</ion-badge></td>
-              <td>
+              <!-- <td>
                 <ion-button fill="clear">
                   <ion-icon slot="icon-only" name="information"></ion-icon>
                 </ion-button>
-              </td>
+              </td> -->
             </tr>
           </tbody>
       </table>

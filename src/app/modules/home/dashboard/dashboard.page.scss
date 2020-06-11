@@ -5,6 +5,8 @@ page-home-dashboard {
         }
     }
     ion-content {
+      --overflow: initial;
+
       ion-card {
         background: transparent;
 
