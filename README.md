@@ -4,7 +4,7 @@
 </div>
 
 ## Screenshots
-![Screenshots](/_docs/screenshots/01.gif?raw=true "Screen Shot")
+![Screenshots](/docs/screenshots/01.gif?raw=true "Screen Shot")
 
 # <a name="quick-start"></a>Quick Start
 1. Clone this repository
