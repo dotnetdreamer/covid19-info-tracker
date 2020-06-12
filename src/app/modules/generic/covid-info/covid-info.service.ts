@@ -42,6 +42,8 @@ export class CovidInfoService extends BaseService {
                     }
                 } catch(e) {
                     reject(e);
+                    //fallback
+                    info = await this.appSettingSvc.get<IGlobalInfo>(CovidInfoConstant.KEY_GLOBAL_INFO);
                 }
             }
 

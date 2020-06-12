@@ -1,0 +1,39 @@
+<ion-content class="ion-padding">
+  <div class="outer-container">
+    <div class="container">
+      <div class="container-icon">
+        <ion-icon name="help"></ion-icon>
+      </div>
+      <ion-list>
+        <ion-item>
+          <ion-label>Call WHO helpline Number</ion-label>
+          <ion-button color='warning' href="tel:+41-22-7912111">
+            <ion-icon slot="start" name="call"></ion-icon> 
+            <ion-label>{{'help.call' | localizedresource | async}}</ion-label>
+          </ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-label>Email WHO Team</ion-label>
+          <ion-button color='warning' href="mailto:mediainquiries@who.int">
+            <ion-icon slot="start" name="mail"></ion-icon>
+            <ion-label>{{'help.email' | localizedresource | async}}</ion-label>
+          </ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-label>Text 'Hi' to WHO helpdesk</ion-label>
+          <ion-button color='warning' href="https://api.whatsapp.com/send?phone=41798931892&text=hi&source=&data=">
+            <ion-icon slot="start" name="logo-whatsapp"></ion-icon> 
+            <ion-label>{{'help.whatsapp' | localizedresource | async}}</ion-label>
+          </ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-label>Donate via WHO website</ion-label>
+          <ion-button color='warning' href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/donate">
+            <ion-icon slot="start" name="hand-left"></ion-icon> 
+            <ion-label>{{'help.donate' | localizedresource | async}}</ion-label>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

@@ -41,5 +41,12 @@
         "title": "Care",
         "symptoms": "Symptoms",
         "precautions": "Precautions"
+    },
+    "help": {
+        "title": "Help",
+        "email": "Email",
+        "call": "Call",
+        "whatsapp": "WhatsApp",
+        "donate": "Donate"
     }
 }
