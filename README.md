@@ -1,7 +1,7 @@
 <div align="center">
-  <h1>COVID Info Tracker</h1>
-  <p><strong>COVID-19 info tracker</strong></p>
+  <h1>COVID-19 Info Tracker</h1>
+  <p><strong>COVID-19 info tracker built with Capacitor, Ionic</strong></p>
 </div>
-<div align="center">
+
+## Screenshots
 ![Screenshots](/_docs/screenshots/01.gif?raw=true "Screen Shot")
-</div>
